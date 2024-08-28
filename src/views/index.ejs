@@ -1,4 +1,47 @@
-<%- include('baseHead') %>
-<h1>Logistica Jb</h1>
+<%- include('baseHead' , {titlePage : namePage}) %>
+    <div id="hero" class=" relative  flex flex-col gap-5 p-3 w-fit mx-auto justify-center ">
 
-    
+        <div class="relative">
+            <h1 class="  w-[70%] text-3xl md:text-5xl">Bienvenidos a Logistica-JB pioneros en transporte
+
+            </h1>
+            <svg class="icon-truck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-truck">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" />
+            </svg>
+
+        </div>
+
+
+        <p class=" ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur distinctio
+            magnam doloremque
+            numq</p>
+        <a href="/cotizar" class="p-2 w-fit  border rounded">Cotizar ahora</a>
+    </div>
+
+    <section>
+        <h2>seccion de evento </h2>
+        <span>imagen del carro con animacion origen-destino fecha de salida , porcentaje de 
+            capacidad llena y disponible, y un boton de cotizar 
+        </span>
+    </section>
+
+    <section id="section-opinion" class="flex flex-col gap-10">
+        <div class="w-fit mx-auto   justify-center">
+            <h2 class="text-2xl mx-auto w-fit">Opiniones</h2>
+            <span class="text-md">Estamos mejorando gracias a sus opiniones</span>
+        </div>
+        <div class="grid  md:grid-cols-4">
+            <%- include(`components/opinion`) %>
+                <%- include(`components/opinion`) %>
+                    <%- include(`components/opinion`) %>
+                        <%- include(`components/opinion`) %>
+        </div>
+
+    </section>
+
+    <p>poner un icono de carro girando por todo el contenedor</p>
