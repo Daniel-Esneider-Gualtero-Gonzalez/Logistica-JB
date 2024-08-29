@@ -4,42 +4,91 @@
         align-items: center;
         justify-content: space-between;
         padding: 5px;
-        
-    }
-    
-
-    .header-nav img{
-        width: 100px;
 
     }
-    .header-nav ul{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-    }
-    .header-nav .cotizar-button{
-       
-        clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+
+    .header-nav a {
+        padding: 5px;
     }
 
+
+
+
+
+
+    .header-nav .cotizar-button {
+
+        /* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
+    }
 </style>
 <header>
-    <nav class="header-nav" class="">
+    <nav class="header-nav relative">
         <div>
-            <img src="https://imgs.search.brave.com/KazYWo8Rm2Yl2hcE2f9rrX01S6D6CddE0iJxxxQkvZs/rs:fit:500:0:0:0/g:ce/aHR0cDovL3d3dy5j/bGlwYXJ0YmVzdC5j/b20vY2xpcGFydHMv/NGliL0xNZS80aWJM/TWVBS1QucG5n" alt="">
+            <%- include(`logo`) %>
         </div>
-        <div>
-            <ul>
+
+        <div class="invisible md:visible">
+            <ul class="flex gap-2">
+                <li><a href="/" aria-current="page" aria-label="Ir a la sección de sobre nosotros">Inicio</a></li>
                 <li><a href="/about-as" aria-label="Ir a la sección de sobre nosotros">Sobre nosotros</a></li>
                 <li> <a href="/contact-as" aria-label="Ir a la sección de Habilidades">Contactenos</a></li>
             </ul>
-            
+
         </div>
-        <div>
+        <div class="invisible md:visible">
             <a href="/cotizar" class="border cotizar-button" aria-label="Ir a la sección de Cotizar ">Cotizar</a>
         </div>
-        
+
+        <button id="btn-open-menu-mobile" class=" visible md:hidden border rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 6l16 0" />
+                <path d="M4 12l16 0" />
+                <path d="M4 18l16 0" />
+            </svg>
+        </button>
+
+        <!-- menu mobile -->
+        <div id="menu-mobile"
+            class="z-10 invisible md:w-[50%] lg:invisible inset-0 left-0 flex flex-col p-4 gap-3 right-0 bg-gray-300 fixed ">
+            <div class="flex  border justify-between">
+                <div>
+                    <%- include(`logo`) %>
+                </div>
+                <button id="btn-close-menu-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+
+            </div>
+            <ul class="flex flex-col gap-3 justify-start">
+                <li><a href="/" aria-current="page" aria-label="Ir a la sección de sobre nosotros">Inicio</a></li>
+                <li><a href="/about-as" aria-label="Ir a la sección de sobre nosotros">Sobre nosotros</a></li>
+                <li> <a href="/contact-as" aria-label="Ir a la sección de Habilidades">Contactenos</a></li>
+                <a href="">Cotizar</a>
+            </ul>
+
+        </div>
+
     </nav>
 </header>
 
+<script>
+    const btnOpenMenuMobile = document.getElementById("btn-open-menu-mobile")
+    const btnCloseMenuMobile = document.getElementById("btn-close-menu-mobile")
+    const menuMobile = document.getElementById("menu-mobile")
+
+    btnOpenMenuMobile.addEventListener("click", () => {
+        menuMobile.classList.remove("invisible")
+    })
+    btnCloseMenuMobile.addEventListener("click", () => {
+        menuMobile.classList.toggle("invisible")
+    })
+</script>
