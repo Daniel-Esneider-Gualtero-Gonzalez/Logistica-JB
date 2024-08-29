@@ -1,5 +1,5 @@
 <%- include('baseHead' , {titlePage : namePage}) %>
-    <div id="hero" class=" relative  flex flex-col gap-5 p-3 w-fit mx-auto justify-center ">
+    <section id="hero" class=" relative  flex flex-col gap-5 p-3 w-fit mx-auto justify-center ">
 
         <div class="relative">
             <h1 class="  w-[70%] text-3xl md:text-5xl">Bienvenidos a Logistica-JB pioneros en transporte
@@ -21,7 +21,7 @@
             magnam doloremque
             numq</p>
         <a href="/cotizar" class="p-2 w-fit  border rounded">Cotizar ahora</a>
-    </div>
+    </section>
 
     <section>
         <h2>seccion de evento </h2>
@@ -30,12 +30,16 @@
         </span>
     </section>
 
+    <section>
+        <%- include(`components/elegirnos`) %>
+    </section>
+
     <section id="section-opinion" class="flex flex-col gap-10">
         <div class="w-fit mx-auto   justify-center">
             <h2 class="text-2xl mx-auto w-fit">Opiniones</h2>
             <span class="text-md">Estamos mejorando gracias a sus opiniones</span>
         </div>
-        <div class="grid  md:grid-cols-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
             <%- include(`components/opinion`) %>
                 <%- include(`components/opinion`) %>
                     <%- include(`components/opinion`) %>
