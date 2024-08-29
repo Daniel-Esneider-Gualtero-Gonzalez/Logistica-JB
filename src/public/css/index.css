@@ -56,13 +56,17 @@ h2 svg{
 }
 
 
-body section {
-    margin-bottom: 10rem;
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    /* margin-bottom: 20rem; */
 }
-#hero{
 
-}
-
+a[aria-current="page"] {
+    color: red; /* Cambia esto al estilo deseado */
+    font-weight: bold;
+  }
 
 
 
