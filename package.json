@@ -10,7 +10,7 @@
     "build:css": "npx tailwindcss -i ./src/public/css/styles.css -o ./src/public/css/output.css --minify",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "npm run build:css && nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
