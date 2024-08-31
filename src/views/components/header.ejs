@@ -35,7 +35,7 @@
             <a href="/cotizar" class="border cotizar-button" aria-label="Ir a la sección de Cotizar ">Cotizar</a>
         </div>
 
-        <button id="btn-open-menu-mobile" class=" visible md:hidden border rounded">
+        <button id="btn-open-menu-mobile" class="md:hidden  border rounded">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
@@ -45,35 +45,34 @@
                 <path d="M4 18l16 0" />
             </svg>
         </button>
-
-        <!-- menu mobile -->
-        <div id="menu-mobile"
-            class="z-10 invisible  md:w-[50%] lg:invisible inset-0 left-0 flex flex-col  gap-3 right-0 bg-gray-300 fixed ">
-            <div class="flex  border justify-between">
-                <div>
-                    <%- include(`logo`) %>
-                </div>
-                <button id="btn-close-menu-mobile w-fit border">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-x">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M18 6l-12 12" />
-                        <path d="M6 6l12 12" />
-                    </svg>
-                </button>
-
-            </div>
-            <ul class="flex flex-col gap-3 justify-start">
-                <li><a href="/" aria-current="page" aria-label="Ir a la sección de sobre nosotros">Inicio</a></li>
-                <li><a href="/about-as" aria-label="Ir a la sección de sobre nosotros">Sobre nosotros</a></li>
-                <li> <a href="/contact-as" aria-label="Ir a la sección de Habilidades">Contactenos</a></li>
-                <a href="">Cotizar</a>
-            </ul>
-
-        </div>
-
     </nav>
+
+     <!-- menu mobile -->
+     <nav id="menu-mobile"
+     class="z-10 invisible  md:w-[50%] lg:invisible inset-0 left-0 flex flex-col  gap-3 right-0 bg-gray-300 fixed ">
+     <div class="flex  border justify-between">
+         <div>
+             <%- include(`logo`) %>
+         </div>
+         <button id="btn-close-menu-mobile w-fit border">
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                 <path d="M18 6l-12 12" />
+                 <path d="M6 6l12 12" />
+             </svg>
+         </button>
+
+     </div>
+     <ul class="flex flex-col gap-3 justify-start">
+         <li><a href="/" aria-current="page" aria-label="Ir a la sección de sobre nosotros">Inicio</a></li>
+         <li><a href="/about-as" aria-label="Ir a la sección de sobre nosotros">Sobre nosotros</a></li>
+         <li> <a href="/contact-as" aria-label="Ir a la sección de Habilidades">Contactenos</a></li>
+         <a href="">Cotizar</a>
+     </ul>
+
+ </nav>
 </header>
 
 <script>
