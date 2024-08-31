@@ -1,29 +1,33 @@
 <style>
-    .container-opinion{
+    .container-opinion {
         padding: 0.4rem;
-        max-width: 270px;
+        width: 100%;
+        height: fit-content;
         border-radius: 5px;
     }
+
     .container-opinion header p {
         font-size: 1.5rem;
     }
-    .container-opinion header  span{
+
+    .container-opinion header span {
         font-size: 2rem;
         margin: 0px;
         color: blue;
     }
-    .container-opinion:hover svg{
+
+    .container-opinion:hover svg {
         fill: blue;
     }
-
 </style>
 
 <div class="container-opinion border flex flex-col gap-3">
     <header>
-        <p> <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. In omnis consequuntur. <span>"</span> </p>
+        <p> <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. In omnis consequuntur.
+            <span>"</span> </p>
     </header>
     <footer class="relative">
-        <svg  id="svg-user-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="currentColor"
+        <svg id="svg-user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
             class="w-10 border h-10 absolute inset-0 -mt-3 mx-auto rounded-full ">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
