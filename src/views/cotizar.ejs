@@ -1,0 +1,53 @@
+<%- include('baseHead' , {titlePage : namePage}) %>
+<style>
+    #seccion-cotizar select,input,button{
+        display: block;
+        width: 100%;
+        padding: 4px;
+        border-radius: 5px;
+    }
+</style>
+    <section id="seccion-cotizar" class="border w-full">
+        
+        <form id="cotizar-form" class="border rounded grid grid-cols-2  gap-4 p-3 ">
+            <label class=""> Ciudad Origen
+                <select  class="border " name="ciudad-origen" id="">
+                    <option value="Medellin">Medellin</option>
+                </select>
+            </label>
+            <label > Ciudad Destino
+                <select class="border " name="ciudad-destino" id="">
+                    <option value="Bogota">Bogota</option>
+                </select>
+            </label>
+            <label > Peso
+                <input placeholder="peso en kg" required name="peso" class="border" type="number">
+            </label>
+            <label >Dimensiones <input name="dimension" required class="border" type="text"></label>
+            <div class="col-span-full flex gap-2 justify-center items-center">
+                <button class="border w-fit ">Enviar cotizacion whatsapp </button>
+                <button class="border w-fit ">Enviar cotizacion Gmail </button>
+            </div>
+            
+        </form>
+
+    </section>
+
+    <script>
+
+        const formCotizar = document.getElementById("cotizar-form")
+
+        formCotizar.addEventListener("submit",(event)=>{
+            event.preventDefault()
+            const formData = new FormData(event.target)
+            const ciudadOrigen = formData.get("ciudad-origen")
+            const ciudadDestino = formData.get("ciudad-destino")
+            const peso = formData.get("peso")
+            const dimension = formData.get("dimension")
+            location.href = `https://web.whatsapp.com/send?phone=573157057663&text=Para cotizar ciudad de origen: ${ciudadOrigen}, ciudad destino: ${ciudadDestino}, Peso: ${peso}, Dimension : ${dimension}`
+
+            console.log("ciudad de origen" , ciudadOrigen)
+            
+        })
+
+    </script>
