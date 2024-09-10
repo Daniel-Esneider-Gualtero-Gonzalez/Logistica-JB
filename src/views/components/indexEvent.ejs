@@ -1,0 +1,94 @@
+<style>
+    .index-event {
+        padding: 1rem;
+    }
+
+    .index-event .img-truck-event-index {
+
+        filter: drop-shadow(30px 10px 4px black);
+    }
+
+    .index-event .type-service {
+        width: fit-content;
+        padding: 3px;
+        border: 1px solid rebeccapurple;
+        border-radius: 4px;
+    }
+
+    .index-event .date {
+        font-weight: bold;
+    }
+
+    .index-event .rute {
+        font-size: 2rem;
+        display: block;
+        font-weight: bold;
+        transform: rotate(-8deg);
+
+    }
+
+    .index-event .grafico-porcentaje {
+        width: 130px;
+        height: 130px;
+        border-radius: 100%;
+        background-color: red;
+
+    }
+
+    .index-event #button-index-event-cotizar {
+        grid-column: 1 / -1;
+
+
+
+    }
+
+    @keyframes clickMe {
+        0% {
+            transform: rotate(0)
+        }
+
+        33% {
+            transform: rotate(10deg);
+
+        }
+
+        66% {
+            transform: rotate(-10deg);
+        }
+
+        100% {
+            transform: rotate(0);
+        }
+
+    }
+</style>
+<div class="index-event grid grid-cols-2 gap-10">
+
+    <!-- <span>imagen del carro con animacion origen-destino fecha de salida , porcentaje de
+        capacidad llena y disponible, y un boton de cotizar
+    </span> -->
+    <div>
+        <img class="img-truck-event-index" src="/images/img-truck-event.png" alt="">
+    </div>
+    <div class="grid grid-cols-2">
+        <span class="rute h-fit  col-span-full w-fit mx-auto">BOGOTÁ - MEDELLIN</span>
+        <div class="flex flex-col justify-center gap-3">
+            <span class="  type-service">Compartido</span>
+            <div>
+                <span>Fecha de salida:</span>
+                <span class="date">06-09-2024 2:30pm</span>
+
+            </div>
+
+        </div>
+        <div class="border">
+            <div class="grafico-porcentaje"></div>
+        </div>
+    </div>
+
+    <!-- boton de cotizar este viaje -->
+    <div class="col-span-full flex justify-center">
+        <%- include(`LinkButtonAnimation` , {text:"Cotizar ahora", id:"button-index-event-cotizar"}) %>
+            <!-- <h1>poner el boton en el centro mas grande y con otra animacion de rotate x </h1> -->
+    </div>
+</div>
