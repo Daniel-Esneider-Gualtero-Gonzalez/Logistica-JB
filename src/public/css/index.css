@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 p {
     text-wrap: pretty;
 }
@@ -24,7 +25,7 @@ a {
     cursor: pointer;
 }
 
-button{
+button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,24 +40,27 @@ body {
     font-family: "Poppins", "Onest", Serif, Sans-serif, Monospace;
     padding: 1rem;
     overflow-x: hidden;
-    
+
 }
-h1{
+
+h1 {
     font-size: 2rem;
 }
-h2{
+
+h2 {
     display: flex;
     align-items: center;
     font-size: 1.87rem;
 }
-h2 svg{
+
+h2 svg {
     width: 1.87rem;
     height: 1.87rem;
     margin: 0.8rem;
 }
 
 
-body{
+body {
     display: flex;
     flex-direction: column;
     gap: 4rem;
@@ -64,41 +68,69 @@ body{
 }
 
 a[aria-current="page"] {
-    color: red; /* Cambia esto al estilo deseado */
+    position: relative;
+    color: red;
+    /* Cambia esto al estilo deseado */
     font-weight: bold;
-  }
+    
+}
 
-
-
-/* animacion de movimiento del camion */
-
-
-
-
-
-/* section::before{
-    background-color: navy;
+a[aria-current="page"]::before {
+    content: '';
     position: absolute;
-    border: 10px solid navy;
-    width: 10px;
-    height: 20px;
-    margin-left: 10px;
-} */
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: -100%;
+    /* Ajusta según tus necesidades */
+    width: 30px;
+        height: 25px;
+    background-color: red;
+    /* clip-path para la forma de la línea */
+    clip-path: polygon(100% 0, 0 0, 50% 100%);
+    
+}
 
-.icon-truck{
+/* STYLOS DE CURRENT PAGE PARA MOBILE */
+@media (max-width:768px) {
+    a[aria-current="page"]::before {
+        content: '';
+        position: absolute;
+        right: -100px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0 auto;
+        
+        
+        
+        rotate: 90deg;
+        
+        /* Ajusta según tus necesidades */
+        width: 25px;
+        height: 25px;
+        background-color: red;
+        /* clip-path para la forma de la línea */
+        clip-path: polygon(100% 0, 0 0, 50% 100%);
+    }
+    
+}
+
+.icon-truck {
     position: absolute;
     height: 40px;
     width: 40px;
     border-radius: 800px;
     bottom: 0px;
-    
-    
+
+
     transform: rotateY(160deg);
     animation: animationTruckIndexPage 1s reverse ease-in both;
-    
-    
+
+
 }
-.icon-truck-form-contact{
+
+.icon-truck-form-contact {
     position: absolute;
     height: 40px;
     width: 40px;
@@ -107,39 +139,24 @@ a[aria-current="page"] {
 
 
 }
-.icont-flag-form-contact{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 90%;
-}
-@keyframes desplazamientoDerechaTruckFormContact {
-    0%{
-    
-        left: 0%;
-        }
-        
-        100%{
-            /* si QUEREMOS QUE EL ELEMENTO ANIMABLE ESTE DENTRO DE LOS
-            LIMITES DEL CONTENEDOR ===  el 100% del contenedor menos el radio del div animable para que quede dentro del contenedor */
-         left: calc(79%);
-        }
-    
-}
+
+
+
+
 
 
 @keyframes animationTruckIndexPage {
-    to{
+    to {
         opacity: 0;
         right: 0%;
-        
-    }
-    from{
-        opacity: 1;
-        right: calc(40%);
-    }
-    
-    
-    
-}
 
+    }
+
+    from {
+        opacity: 1;
+        right: calc(50%);
+    }
+
+
+
+}
