@@ -1,37 +1,319 @@
 <style>
-    .container-opinion {
-        padding: 0.4rem;
-        width: 100%;
-        height: fit-content;
-        border-radius: 5px;
+    .div-opinion footer {
+        display: flex;
+        justify-content: center;
     }
 
-    .container-opinion header p {
-        font-size: 1.5rem;
+    @media (max-width:890px) {
+
+        /* estylos de opinion para mobile */
+        #container-opinion {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+
+
+        }
+
+        .image-user-opinion {
+            width: 70px;
+
+        }
+
+        .div-opinion {
+            width: 100%;
+
+            
+            font-weight: 500;
+            flex-shrink: 0;
+
+            /* animation: topanimation 1s linear reverse both; */
+            /* transition: all 1s linear; */
+        }
+
+
+
+
     }
 
-    .container-opinion header span {
-        font-size: 2rem;
-        margin: 0px;
-        color: blue;
+
+    /* estylos de seccion de opinion para laptos */
+
+    @media (min-width:890px) {
+        :root {
+            --container-opinion-width: 850px;
+            --container-opinion-height: 460px;
+            --div-opinion-width: 400px;
+            --div-opinion-height: 200px;
+
+        }
+
+        @media (min-width:1000px) {
+            :root {
+                --container-opinion-width: 1100px;
+                --div-opinion-width: 480px;
+                
+            }
+        }
+
+        #container-opinion {
+            /* border: 1px solid black; */
+            position: relative;
+            overflow: hidden;
+            height: var(--container-opinion-height);
+            width: var(--container-opinion-width);
+            margin: auto;
+
+        }
+
+        #container-opinion div:nth-child(1) {
+            position: absolute;
+            bottom: 0;
+            /* animation: firstOpinion 2s linear; */
+        }
+
+        #container-opinion div:nth-child(2) {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+
+            /* animation: toFirstOpinion 2s linear; */
+        }
+
+        #container-opinion div:nth-child(3) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            /* animation: toSecondOpinion 2s linear; */
+
+        }
+
+        #container-opinion div:nth-child(4) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+
+        }
+
+        .div-opinion {
+            width: var(--div-opinion-width);
+            height: var(--div-opinion-height);
+            padding: 5px;
+            
+            font-weight: 500;
+
+            /* animation: topanimation 1s linear reverse both; */
+            /* transition: all 1s linear; */
+        }
+
+        .comillas {
+            color: blue;
+            font-size: 1.5rem;
+            margin-inline: 3px;
+        }
+
+        .image-user-opinion {
+            width: 60px;
+            height: 60px;
+
+            border-radius: 100%;
+        }
+
+        /* la primera opinion pasa a hacerf eliminada  */
+        .first-opinion {
+            animation: firstOpinion 2s linear both;
+        }
+
+        /* la segunda opinion pasa a hacer la primera */
+        .to-first-opinion {
+            animation: toFirstOpinion 2s linear both;
+        }
+
+        /* la tercera opinion pasa a hacer la segunda */
+        .to-second-opinion {
+            animation: toSecondOpinion 2s linear both;
+        }
+
+        .new-opinion {
+
+            animation: newOpinion 1s linear;
+        }
+
     }
 
-    .container-opinion:hover svg {
-        fill: blue;
+
+
+    @keyframes firstOpinion {
+        to {
+            transform: translateX(-100%);
+            opacity: 0;
+
+
+        }
+    }
+
+
+    @keyframes toFirstOpinion {
+        from {
+            transform: translate(0, 0);
+            /* Comienza en la posición actual */
+        }
+
+        to {
+            transform: translate(calc(calc(0px - calc(var(--container-opinion-width) / 2)) + calc(0px + calc(var(--div-opinion-width) / 2))), calc(var(--container-opinion-height) - var(--div-opinion-height)));
+            /* Mueve hacia arriba e izquierda */
+        }
+    }
+
+    @keyframes toSecondOpinion {
+        from {
+            transform: translate(0, 0);
+            /* Comienza en la posición actual */
+        }
+
+        /* para que el translate sea efectivo hay que ponerle un ancho exacto al contenedor
+        mas la mitad  del ancho o radio del elemento opinion */
+        to {
+            transform: translate(calc(calc(0px - (var(--container-opinion-width) / 2)) + calc(0px + calc(var(--div-opinion-width) / 2))), calc(-0px - calc(var(--container-opinion-height) - var(--div-opinion-height))));
+            /* Mueve hacia arriba e izquierda */
+        }
+    }
+
+    @keyframes newOpinion {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
     }
 </style>
 
-<div class="container-opinion border flex flex-col gap-3">
-    <header>
-        <p> <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. In omnis consequuntur.
-            <span>"</span> </p>
-    </header>
-    <footer class="relative">
-        <svg id="svg-user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            class="w-10 border h-10 absolute inset-0 -mt-3 mx-auto rounded-full ">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-            <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
-        </svg>
-    </footer>
+
+<div id="container-opinion" class="">
+    <% opinions.forEach(function(opinion, index){ %>
+        <% if (index <=2 ) { %>
+            <div class="div-opinion ">
+                <p><span class="comillas">""</span>
+                    <%= opinion.textOpinion %><span class="comillas">""</span>
+                </p>
+                <footer class="flex gap-3 items-center mt-3">
+                    <img class="image-user-opinion"
+                        src="https://imgs.search.brave.com/QXX2xvcXcGS2jVr8hyGdwhw1WOxBOa2YUPkaNz-SR3c/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYWxsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMTMvR29r/dS5wbmc"
+                        alt="">
+                    <span>kakaroto</span>
+                </footer>
+            </div>
+            <% } %>
+
+                <% }); %>
+
+
 </div>
+
+<script>
+    const getOpinions = <%- JSON.stringify(opinions) %>;
+    // maxima posicion para insertar la nueva opinion
+    let maxOpinion = getOpinions.length
+    // posicion inicial para la nueva opinion "depende de cuantas opiniones iniciales pongamos"
+    let currentNewOpinion = 3
+    // variable para almacenar el id del intervalo
+    let opinionInterval;
+
+    // mediaquery para pausar la animacion
+    const mediaQuery = window.matchMedia('(min-width: 890px)');
+
+    function starOpinionInterval() {
+
+        opinionInterval = setInterval(() => {
+            const divElement = document.getElementById("container-opinion")
+            const [div1, div2, div3] = divElement.children
+
+            div1.addEventListener("animationstart", () => {
+                const newDiv = document.createElement("div")
+                const param = document.createElement("p")
+                if (currentNewOpinion === maxOpinion) {
+                    currentNewOpinion = 0
+                }
+                const newOpinion = getOpinions[currentNewOpinion]
+                param.textContent = `${newOpinion.textOpinion}`
+                newDiv.appendChild(param)
+                // pasamos a la siguiente opinion
+                currentNewOpinion++
+                newDiv.classList.add("new-opinion", "div-opinion")
+
+                // div1.remove()
+                divElement.appendChild(newDiv)
+            }, { once: true })
+            div1.addEventListener("animationend", () => {
+                const clonedContainer = divElement.cloneNode(false)
+
+                Array.from(divElement.children).forEach((child, index) => {
+                    if (index !== 0) { // Excluir el primer hijo
+                        child.className = "div-opinion"
+                        const clonedChild = child.cloneNode(true);
+
+                        // Clonar el hijo completamente
+                        clonedContainer.appendChild(clonedChild);
+                    }
+                });
+                divElement.parentNode.replaceChild(clonedContainer, divElement);
+
+
+
+
+            }, { once: true })
+            // div1.classList.remove("last-opinion")
+            div1.classList.add("first-opinion")
+            div2.classList.add("to-first-opinion")
+            div3.classList.add("to-second-opinion")
+
+
+
+        }, 10000)
+
+    }
+
+    function stopOpinionInterval() {
+        clearInterval(opinionInterval);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopOpinionInterval()
+        } else {
+            starOpinionInterval()
+        }
+    })
+
+    mediaQuery.addEventListener("change", (event) => {
+        if (event.matches) {
+            if (opinionInterval) stopOpinionInterval()
+            starOpinionInterval()
+        } else {
+            stopOpinionInterval()
+
+
+        }
+    })
+
+
+
+
+    // funcion para comprobar si el media query inicial coicide , para no tener que esperar al del evento
+    function startInitial() {
+        const initialMedia = window.matchMedia('(min-width: 890px)')
+        if (initialMedia.matches) {
+            starOpinionInterval()
+           
+        }
+       
+    }
+    startInitial()
+
+
+</script>
