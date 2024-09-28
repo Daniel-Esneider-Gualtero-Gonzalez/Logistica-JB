@@ -1,4 +1,21 @@
-/* Reset general */
+:root{
+    --thumb-color: #90A4AE;
+}
+::-webkit-scrollbar{
+    width: 12px;
+   }
+   ::-webkit-scrollbar-track{
+    
+    background:auto;  
+   }
+   ::-webkit-scrollbar-thumb{
+     -webkit-border-radius:auto;
+    border-radius:auto;
+    background:var( --thumb-color); 
+    border-radius: 5px;
+    transition: all 500ms linear;
+    
+   }
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +29,11 @@ p {
 
 body {
     line-height: 1.5;
+    scrollbar-color: red blue;
+    
+}
+body::-webkit-scrollbar-track{
+    background: blue;
 }
 
 ul,
@@ -40,10 +62,13 @@ body {
     font-family: "Poppins", "Onest", Serif, Sans-serif, Monospace;
     padding: 1rem;
     overflow-x: hidden;
+    
+   
 
 }
 
 h1 {
+    text-wrap: pretty;
     font-size: 2rem;
 }
 
@@ -116,47 +141,4 @@ a[aria-current="page"]::before {
     
 }
 
-.icon-truck {
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    border-radius: 800px;
-    bottom: 0px;
 
-
-    transform: rotateY(160deg);
-    animation: animationTruckIndexPage 1s reverse ease-in both;
-
-
-}
-
-.icon-truck-form-contact {
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    border-radius: 800px;
-    animation: desplazamientoDerechaTruckFormContact 1s ease-in both;
-
-
-}
-
-
-
-
-
-
-@keyframes animationTruckIndexPage {
-    to {
-        opacity: 0;
-        right: 0%;
-
-    }
-
-    from {
-        opacity: 1;
-        right: calc(50%);
-    }
-
-
-
-}
