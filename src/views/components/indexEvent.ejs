@@ -1,12 +1,38 @@
 <style>
     .index-event {
         padding: 1rem;
+        position: relative;
+        grid-template-columns: repeat(1, minmax(0.9fr, 1fr));
+        gap: 4rem;
     }
-
     .index-event .img-truck-event-index {
-
+        position: absolute;
+        z-index: -1;
         filter: drop-shadow(30px 10px 4px black);
+        opacity: 0.8;
     }
+
+@media (min-width:615px) {
+    .index-event {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    .index-event .img-truck-event-index {
+        position: static;
+        z-index: 1;
+        filter: drop-shadow(30px 10px 4px black);
+        opacity: 1;
+    }
+}
+    
+
+    .container-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
 
     .index-event .type-service {
         width: fit-content;
@@ -27,13 +53,67 @@
 
     }
 
-    .index-event .grafico-porcentaje {
-        width: 130px;
-        height: 130px;
-        border-radius: 100%;
-        background-color: red;
+    .index-event .container-grafic-percentage {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+
+
 
     }
+
+    .container-percentage-number {
+
+        position: absolute;
+        inset: 0;
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
+        /* border: 1px solid black; */
+        display: flex;
+        gap: 3rem;
+    }
+
+    .container-percentage-number #progress-percentage-full-number {
+        position: relative;
+
+    }
+
+    .container-percentage-number #progress-percentage-full-number::before {
+        content: "Lleno";
+        position: absolute;
+        top: -100%;
+        left: -120%;
+        font-weight: 600;
+
+    }
+
+    .container-percentage-number #progress-percentage-available-number {
+        position: relative;
+    }
+
+    .container-percentage-number #progress-percentage-available-number::before {
+        content: "Disponible";
+        position: absolute;
+        top: -100%;
+        right: -120%;
+        font-weight: 600;
+
+    }
+
+    #circle-progress-fondo {
+        stroke: rgb(219, 230, 219);
+
+    }
+
+    #progress-circle {
+        stroke: red;
+
+    }
+
+
 
     .index-event #button-index-event-cotizar {
         grid-column: 1 / -1;
@@ -62,7 +142,7 @@
 
     }
 </style>
-<div class="index-event grid grid-cols-2 gap-10">
+<div class="index-event  ">
 
     <!-- <span>imagen del carro con animacion origen-destino fecha de salida , porcentaje de
         capacidad llena y disponible, y un boton de cotizar
@@ -70,10 +150,10 @@
     <div>
         <img class="img-truck-event-index" src="/images/img-truck-event.png" alt="">
     </div>
-    <div class="grid grid-cols-2">
+    <div class="container-info ">
         <span class="rute h-fit  col-span-full w-fit mx-auto">BOGOTÁ - MEDELLIN</span>
         <div class="flex flex-col justify-center gap-3">
-            <span class="  type-service">Compartido</span>
+            <span class=" type-service">Compartido</span>
             <div>
                 <span>Fecha de salida:</span>
                 <span class="date">06-09-2024 2:30pm</span>
@@ -81,14 +161,99 @@
             </div>
 
         </div>
-        <div class="border">
-            <div class="grafico-porcentaje"></div>
+        <div class="">
+            <div class="container-grafic-percentage">
+                <div class="container-percentage-number">
+                    <div>
+                        <span id="progress-percentage-full-number">0%</span>
+                    </div>
+                    <div>
+                        <div>
+                            <span id="progress-percentage-available-number">0%</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <svg id="grafic-percentage" width="200" height="200" viewBox="0 0 120 120">
+                    <!-- Fondo del círculo (el círculo completo) -->
+                    <!-- cx y cy son coordenadas de la posicion del circulo tienen que ser iguales al de llenado para que quede exacto -->
+                    <circle id="circle-progress-fondo" class="circle-progress-fondo" id="pr" cx="60" cy="60" r="54"
+                        stroke="#e6e6e6" stroke-width="12" fill="none" transform="rotate(-90 60 60)" />
+                    <!-- Círculo de progreso disponible -->
+                    <circle id="progress-circle-disponible" cx="60" cy="60" r="54" stroke="none" stroke-width="12"
+                        fill="none" stroke-dasharray="339.292" stroke-dashoffset="calc(339.292 - (339.292 * 0 / 100))"
+                        transform="rotate(-90 60 60)" />
+                    <!-- Círculo de progreso lleno -->
+                    <circle id="progress-circle" cx="60" cy="60" r="54" stroke="#4CAF50" stroke-width="12" fill="none"
+                        stroke-dasharray="339.292" stroke-dashoffset="calc(339.292 - (339.292 * 0 / 100))"
+                        transform="rotate(-90 60 60)" />
+                </svg>
+            </div>
         </div>
     </div>
 
     <!-- boton de cotizar este viaje -->
-    <div class="col-span-full flex justify-center">
+    <div class="col-span-full mt-10 flex justify-center">
         <%- include(`LinkButtonAnimation` , {text:"Cotizar ahora", id:"button-index-event-cotizar"}) %>
             <!-- <h1>poner el boton en el centro mas grande y con otra animacion de rotate x </h1> -->
     </div>
 </div>
+
+<script>
+    const graficPercentage = document.getElementById("grafic-percentage")
+    const progressPercentageFullNumber = document.getElementById("progress-percentage-full-number")
+    const progressPercentageAvailableNumber = document.getElementById("progress-percentage-available-number")
+    const progressCircleDisponible = document.getElementById("progress-circle-disponible")
+    const progressCircle = graficPercentage.querySelector("#progress-circle")
+
+
+    const randomNumberPercent = Math.floor(Math.random() * 101);
+    let animacionId = null;
+    let current = 1 // porcentaaje inicial para iniciar la animacion
+    // Crear una instancia de IntersectionObserver
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Verificar si el elemento está intersectando (visible en la pantalla)
+            if (entry.isIntersecting) {
+
+                animacionId = requestAnimationFrame(starAnimationProgressCircle)
+                observer.disconnect()
+            }
+        });
+    });
+
+
+    function starAnimationProgressCircle() {
+
+        if (current > 100) {
+
+            current = 1
+            cancelAnimationFrame(animacionId)
+            return
+        }
+
+        const dashOffset = 339.292 - (339.292 * current / 100);
+        if (current <= randomNumberPercent) {
+
+            progressCircle.style.strokeDashoffset = dashOffset;
+            progressPercentageFullNumber.textContent = `${current}%`
+
+        }
+        if (current >= randomNumberPercent) {
+            progressCircleDisponible.style.stroke = "green"
+
+            progressPercentageAvailableNumber.textContent = `${current - randomNumberPercent}%`
+        }
+
+        progressCircleDisponible.style.strokeDashoffset = dashOffset;
+
+        current++
+        animacionId = requestAnimationFrame(starAnimationProgressCircle)
+
+    }
+
+    observer.observe(graficPercentage)
+
+
+</script>
