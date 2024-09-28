@@ -5,31 +5,15 @@
 
         
     </style>
-    <section id="hero" class="  relative  flex flex-col gap-5 p-3 w-fit mx-auto justify-center ">
-
-        <div class="relative border">
-            <h1 class="  w-[50%] text-3xl md:text-5xl">Logistica-JB pioneros en transporte</h1>
-            <svg class="icon-truck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-truck">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                <path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" />
-            </svg>
-
-        </div>
-
-
-        <p class=" w-[70%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur distinctio
-            magnam doloremqugnam consectetur sunt? Consequuntur nisi numquam debitis temporibus!
-            numq</p>
-        <%- include(`components/LinkButtonAnimation` , {text:"Cotizar ahora",id:null}) %>
-    </section>
+     <%- include("components/hero") %>
 
     <section>
         <%- include(`components/indexEvent`) %>
        
+    </section>
+
+    <section>
+        <%- include(`components/services`) %>
     </section>
 
     <section>
@@ -39,7 +23,7 @@
     <section  class="flex flex-col gap-10">
         <div class="flex flex-col gap-3" >
             <h2 class="text-3xl w-fit  mx-auto">Opiniones</h2>
-        <p  class="w-fit mx-auto">Gracias a sus opiniones seguimos mejorando  </p>
+        <p  class="w-fit h-fit  text-center mx-auto">Gracias a sus opiniones seguimos mejorando  </p>
         </div>
         <%- include(`components/opinion`, {opinions: opinions}) %>
     </section>
