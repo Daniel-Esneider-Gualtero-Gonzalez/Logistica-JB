@@ -223,6 +223,7 @@
     let currentNewOpinion = 3
     // variable para almacenar el id del intervalo
     let opinionInterval;
+    let opinionIntervalMobile;
 
     // mediaquery para pausar la animacion
     const mediaQuery = window.matchMedia('(min-width: 890px)');
@@ -277,9 +278,35 @@
         }, 10000)
 
     }
+    
+    function starOpinionIntervalMobile(){
+        // si  tiene un minimo de ancho de 890 quitamos el mobiles
+        if(window.matchMedia('(min-width: 890px)').matches) {
+            if(opinionIntervalMobile) starOpinionIntervalMobile()
+            return
+        }
+
+        opinionIntervalMobile = setInterval(()=> {
+            const divElement = document.getElementById("container-opinion")
+            console.log("children mobile", divElement.children)
+            const [opinion1,opinion2,others]= divElement.children
+            console.log(opinion1)
+            
+            // opinion1.classList.add("first-opinion")
+
+
+        }, 5000)
+
+        
+
+    }
 
     function stopOpinionInterval() {
         clearInterval(opinionInterval);
+    }
+    function stopOpinionIntervalMobile() {
+        clearInterval(opinionIntervalMobile)
+        
     }
 
     document.addEventListener("visibilitychange", () => {
@@ -296,10 +323,14 @@
             starOpinionInterval()
         } else {
             stopOpinionInterval()
+            // tenemos que inical la animacion de opinion para mobile
 
 
         }
     })
+
+    // para mobile
+    // const mediaMobile = 
 
 
 
@@ -310,6 +341,9 @@
         if (initialMedia.matches) {
             starOpinionInterval()
            
+        }else{
+            console.log("es menor de 890")
+            starOpinionIntervalMobile()
         }
        
     }
