@@ -1,0 +1,56 @@
+<style>
+    #hero {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        height: 80dvh;
+    }
+
+   
+
+    #hero h1 {
+        text-align: center;
+        font-size: 1.8rem;
+        width: 100%;
+
+
+    }
+
+    #hero h1 span {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: rgb(34, 14, 75);
+    }
+
+    #hero p {
+        width: 100%;
+    }
+
+    @media (min-width:648px) {
+
+        #hero h1 {
+            
+            font-size: 3.65rem;
+
+        }
+        #hero p{
+            width: 80% ;
+        }
+    }
+</style>
+<section id="hero" class="  relative  flex flex-col gap-5  w-fit mx-auto justify-center ">
+
+    <div class="relative ">
+        <h1 class="  "><span>Transportando-Ideas</span> pioneros en transporte</h1>
+    </div>
+
+
+    <p class=" ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid consequatur distinctio
+        magnam doloremqugnam consectetur sunt? Consequuntur nisi numquam debitis temporibus!
+        numq</p>
+    <%- include(`LinkButtonAnimation` , {text:"Cotizar ahora",id:null}) %>
+</section>
